@@ -109,6 +109,9 @@
         color: #006ec5;
         transition: all 400ms ease-in-out;
       }
+      .source {
+        text-align: center;
+      }
     </style>
   </head>
   <body>
@@ -246,6 +249,12 @@
           </div>
         </div>
       </div>
+      <div class="source">
+        <a target="_blank" href="https://github.com/Armita2oo3/weather-app"
+          >Open-Source Code</a
+        >
+        <span><em> by Armita Mir</em></span>
+      </div>
     </div>
     <script>
       function changeCity(event) {
@@ -262,6 +271,7 @@
       function changeTempreture(position) {
         let tempreture = document.querySelector(".zero");
         let newTempreture = Math.ceil(position.data.main.temp);
+
         tempreture.innerHTML = `${newTempreture}`;
       }
 
