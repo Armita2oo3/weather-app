@@ -348,7 +348,13 @@
       let dayOfWeek = days[day];
       console.log(dayOfWeek);
       let hour = calender.getHours();
+      if (hour < 10) {
+        hour = `0${hour}`;
+      }
       let min = calender.getMinutes();
+      if (min < 10) {
+        min = `0${min}`;
+      }
       date.innerHTML = `${dayOfWeek} ${hour}:${min}`;
       let update = document.querySelector(".update");
       update.innerHTML = `${dayOfWeek} ${hour}:${min}`;
