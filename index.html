@@ -118,6 +118,15 @@
         color: white;
         text-decoration: none;
       }
+      .updated {
+        text-align: center;
+        color: white;
+        font-size: medium;
+        margin-bottom: 10px;
+      }
+      .update {
+        font-weight: 600;
+      }
     </style>
   </head>
   <body>
@@ -253,6 +262,7 @@
           </div>
         </div>
       </div>
+      <div class="Updated">Last Updated : <span class="update"></span></div>
       <div class="source">
         <a target="_blank" href="https://github.com/Armita2oo3/weather-app"
           >Open-Source Code</a
@@ -340,6 +350,8 @@
       let hour = calender.getHours();
       let min = calender.getMinutes();
       date.innerHTML = `${dayOfWeek} ${hour}:${min}`;
+      let update = document.querySelector(".update");
+      update.innerHTML = `${dayOfWeek} ${hour}:${min}`;
     </script>
   </body>
 </html>
