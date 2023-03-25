@@ -270,13 +270,11 @@
           </div>
         </div>
       </div>
-      <div class="Updated">Last Updated : <span class="update"></span></div>
-      <div class="source">
-        <a target="_blank" href="https://github.com/Armita2oo3/weather-app"
-          >Open-Source Code</a
-        >
-        <span><em> by Armita Mir</em></span>
+      <div class="Updated">
+        Last Updated : <span class="update"></span>
+        <span class="update amOrpm"></span>
       </div>
+      <div class="source"></div>
     </div>
     <script>
       function showIcon(position) {
@@ -378,6 +376,13 @@
       if (hour < 10) {
         hour = `0${hour}`;
       }
+      if (hour <= 24 && hour >= 12) {
+        let pm = document.querySelector(".amOrpm");
+        pm.innerHTML = "PM";
+      } else {
+        pm.innerHTML = "AM";
+      }
+
       let min = calender.getMinutes();
       if (min < 10) {
         min = `0${min}`;
