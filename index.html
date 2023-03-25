@@ -135,6 +135,10 @@
         height: 150px;
         width: 150px;
       }
+      .active {
+        text-decoration: none;
+        color: black;
+      }
     </style>
   </head>
   <body>
@@ -155,7 +159,7 @@
         <img src="" alt="" id="icon" />
         <div class="zero text-center"></div>
         <span class="degree"
-          ><a class="celcious" href="#">°C</a>
+          ><a class="active celcious" href="#">°C</a>
           <span class="seperator">|</span>
           <a class="faranheit" href="#">°F</a>
         </span>
@@ -264,7 +268,7 @@
                 />
               </div>
               <div>
-                <h4>12° / 0°</h4>
+                <h4>Unknown</h4>
               </div>
             </div>
           </div>
@@ -274,7 +278,12 @@
         Last Updated : <span class="update"></span>
         <span class="update amOrpm"></span>
       </div>
-      <div class="source"></div>
+      <div class="source">
+        <a target="_blank" href="https://github.com/Armita2oo3/weather-app"
+          >Open-Source Code</a
+        >
+        <span><em> by Armita Mir</em></span>
+      </div>
     </div>
     <script>
       function showIcon(position) {
@@ -329,7 +338,7 @@
         let name = position.data.weather[0].icon;
         let newUrl = `https://openweathermap.org/img/wn/${name}@2x.png`;
         icon.setAttribute("src", `${newUrl}`);
-        console.log(position);
+
         let describe = position.data.weather[0].description;
         icon.setAttribute("alt", `${describe}`);
         console.log(position.data.weather[0].description);
@@ -376,11 +385,11 @@
       if (hour < 10) {
         hour = `0${hour}`;
       }
+      let time = document.querySelector(".amOrpm");
       if (hour <= 24 && hour >= 12) {
-        let pm = document.querySelector(".amOrpm");
-        pm.innerHTML = "PM";
+        time.innerHTML = "PM";
       } else {
-        pm.innerHTML = "AM";
+        time.innerHTML = "AM";
       }
 
       let min = calender.getMinutes();
@@ -390,6 +399,80 @@
       date.innerHTML = `${dayOfWeek} ${hour}:${min}`;
       let update = document.querySelector(".update");
       update.innerHTML = `${dayOfWeek} ${hour}:${min}`;
+
+      function changeDegreeLocal(event) {
+        event.preventDefault();
+        axios
+          .get(
+            `https://api.openweathermap.org/data/2.5/weather?q=mashhad&units=imperial&appid=a39d99e6ced537cd2e2f653ab550f5cf`
+          )
+          .then(displayDegree);
+      }
+      function displayDegree(position) {
+        let temp = document.querySelector(".zero");
+        temp.innerHTML = Math.round(position.data.main.temp);
+        faranheit.classList.add("active");
+        celcious.classList.remove("active");
+      }
+      let faranheitLocal = document.querySelector(".faranheit");
+      faranheitLocal.addEventListener("click", changeDegreeLocal);
+
+      function changeDegreeLocal2(event) {
+        event.preventDefault();
+        axios
+          .get(
+            `https://api.openweathermap.org/data/2.5/weather?q=mashhad&units=metric&appid=a39d99e6ced537cd2e2f653ab550f5cf`
+          )
+          .then(displayDegree2);
+      }
+      function displayDegree2(position) {
+        let temp = document.querySelector(".zero");
+        temp.innerHTML = Math.round(position.data.main.temp);
+        faranheit.classList.remove("active");
+        celcious.classList.add("active");
+      }
+      let celciousLocal = document.querySelector(".celcious");
+      celciousLocal.addEventListener("click", changeDegreeLocal2);
+
+      function changeDegree(event) {
+        event.preventDefault();
+        let search = document.querySelector(".search");
+        let city = document.querySelector(".city");
+        city.innerHTML = `${search.value}`;
+        let cityName = search.value;
+
+        let link = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=a39d99e6ced537cd2e2f653ab550f5cf`;
+        axios.get(link).then(changeToCelcious);
+      }
+      function changeToCelcious(position) {
+        let temp = document.querySelector(".zero");
+        temp.innerHTML = Math.round(position.data.main.temp);
+        faranheit.classList.remove("active");
+        celcious.classList.add("active");
+      }
+
+      let celcious = document.querySelector(".celcious");
+      celcious.addEventListener("click", changeDegree);
+
+      function changeDegree2(event) {
+        event.preventDefault();
+        let search = document.querySelector(".search");
+        let city = document.querySelector(".city");
+        city.innerHTML = `${search.value}`;
+        let cityName = search.value;
+
+        let link = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=a39d99e6ced537cd2e2f653ab550f5cf`;
+        axios.get(link).then(changeTofaranheit);
+      }
+      function changeTofaranheit(position) {
+        let temp = document.querySelector(".zero");
+        temp.innerHTML = Math.round(position.data.main.temp);
+        faranheit.classList.add("active");
+        celcious.classList.remove("active");
+      }
+
+      let faranheit = document.querySelector(".faranheit");
+      faranheit.addEventListener("click", changeDegree2);
     </script>
   </body>
 </html>
