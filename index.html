@@ -280,7 +280,6 @@
     </div>
     <script>
       function showIcon(position) {
-        console.log(position);
         let icon = document.querySelector("#icon");
         let name = position.data.weather[0].icon;
         let newUrl = `https://openweathermap.org/img/wn/${name}@2x.png`;
@@ -297,7 +296,7 @@
         temp.innerHTML = Math.round(position.data.main.temp);
         let info = document.querySelector("#info");
         info.innerHTML = position.data.weather[0].main;
-        console.log(position);
+
         let extra = document.querySelector(".extraInfo");
         extra.innerHTML = Math.round(position.data.wind.speed);
       }
@@ -326,7 +325,7 @@
 
         let extra = document.querySelector(".extraInfo");
         extra.innerHTML = Math.round(position.data.wind.speed);
-        console.log(position);
+
         let icon = document.querySelector("#icon");
         let name = position.data.weather[0].icon;
         let newUrl = `https://openweathermap.org/img/wn/${name}@2x.png`;
@@ -369,7 +368,7 @@
         "Saturday",
       ];
       let dayOfWeek = days[day];
-      console.log(dayOfWeek);
+
       let hour = calender.getHours();
       if (hour < 10) {
         hour = `0${hour}`;
