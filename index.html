@@ -183,7 +183,7 @@
           <div class="row">
             <div class="first col border-2 text-center p-4">
               <div>
-                <h4 class="day">Wed</h4>
+                <h4 class="day" id="first"></h4>
               </div>
               <div class="emoji">
                 <img
@@ -198,7 +198,7 @@
             </div>
             <div class="col border-2 text-center p-4">
               <div>
-                <h4 class="day">Thu</h4>
+                <h4 class="day" id="second"></h4>
               </div>
               <div class="emoji">
                 <img
@@ -213,7 +213,7 @@
             </div>
             <div class="col border-2 text-center p-4">
               <div>
-                <h4 class="day">Fri</h4>
+                <h4 class="day" id="third"></h4>
               </div>
               <div class="emoji sun">
                 <img
@@ -228,7 +228,7 @@
             </div>
             <div class="col border-2 text-center p-4">
               <div>
-                <h4 class="day">Sat</h4>
+                <h4 class="day" id="forth"></h4>
               </div>
               <div class="emoji">
                 <img
@@ -243,7 +243,7 @@
             </div>
             <div class="col border-2 text-center p-4">
               <div>
-                <h4 class="day">Sun</h4>
+                <h4 class="day" id="fifth"></h4>
               </div>
               <div class="emoji">
                 <img
@@ -258,7 +258,7 @@
             </div>
             <div class="last col border-2 text-center p-4">
               <div>
-                <h4 class="day">Mon</h4>
+                <h4 class="day" id="sixth"></h4>
               </div>
               <div class="emoji">
                 <img
@@ -379,7 +379,20 @@
         "Friday",
         "Saturday",
       ];
+      let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
       let dayOfWeek = days[day];
+      let first = document.querySelector("#first");
+      first.innerHTML = daysOfWeek[day + 1];
+      let second = document.querySelector("#second");
+      second.innerHTML = daysOfWeek[day + 2];
+      let third = document.querySelector("#third");
+      third.innerHTML = daysOfWeek[day + 3];
+      let forth = document.querySelector("#forth");
+      forth.innerHTML = daysOfWeek[day + 4];
+      let fifth = document.querySelector("#fifth");
+      fifth.innerHTML = daysOfWeek[day + 5];
+      let sixth = document.querySelector("#sixth");
+      sixth.innerHTML = daysOfWeek[day + 6];
 
       let hour = calender.getHours();
       if (hour < 10) {
