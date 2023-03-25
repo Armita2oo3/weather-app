@@ -284,6 +284,9 @@
         let name = position.data.weather[0].icon;
         let newUrl = `https://openweathermap.org/img/wn/${name}@2x.png`;
         icon.setAttribute("src", `${newUrl}`);
+        let describe = position.data.weather[0].description;
+        icon.setAttribute("alt", `${describe}`);
+        console.log(position.data.weather[0].description);
       }
 
       let iconUrl = `https://api.openweathermap.org/data/2.5/weather?q=mashhad&units=metric&appid=a39d99e6ced537cd2e2f653ab550f5cf`;
@@ -322,14 +325,16 @@
         tempreture.innerHTML = `${newTempreture}`;
         let info = document.querySelector("#info");
         info.innerHTML = position.data.weather[0].main;
-
         let extra = document.querySelector(".extraInfo");
         extra.innerHTML = Math.round(position.data.wind.speed);
-
         let icon = document.querySelector("#icon");
         let name = position.data.weather[0].icon;
         let newUrl = `https://openweathermap.org/img/wn/${name}@2x.png`;
         icon.setAttribute("src", `${newUrl}`);
+        console.log(position);
+        let describe = position.data.weather[0].description;
+        icon.setAttribute("alt", `${describe}`);
+        console.log(position.data.weather[0].description);
       }
 
       let form = document.querySelector(".location");
