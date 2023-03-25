@@ -312,11 +312,10 @@
         let city = document.querySelector(".city");
         city.innerHTML = `${search.value}`;
         let cityName = search.value;
-        let key = "a39d99e6ced537cd2e2f653ab550f5cf";
-        let unit = "metric";
-        let link = `https://api.openweathermap.org/data/2.5/weather?=${cityName}&appid=${key}&units=${unit}`;
+        let link = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=a39d99e6ced537cd2e2f653ab550f5cf`;
         axios.get(link).then(changeTempreture);
       }
+
       function changeTempreture(position) {
         let tempreture = document.querySelector(".zero");
         let newTempreture = Math.ceil(position.data.main.temp);
@@ -328,6 +327,10 @@
         let extra = document.querySelector(".extraInfo");
         extra.innerHTML = Math.round(position.data.wind.speed);
         console.log(position);
+        let icon = document.querySelector("#icon");
+        let name = position.data.weather[0].icon;
+        let newUrl = `https://openweathermap.org/img/wn/${name}@2x.png`;
+        icon.setAttribute("src", `${newUrl}`);
       }
 
       let form = document.querySelector(".location");
