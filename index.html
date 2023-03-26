@@ -286,6 +286,59 @@
       </div>
     </div>
     <script>
+      function changeDegreeLocal(event) {
+        event.preventDefault();
+        axios
+          .get(
+            `https://api.openweathermap.org/data/2.5/weather?q=mashhad&units=imperial&appid=a39d99e6ced537cd2e2f653ab550f5cf`
+          )
+          .then(displayDegree);
+      }
+      function displayDegree(position) {
+        let temp = document.querySelector(".zero");
+        temp.innerHTML = Math.round(position.data.main.temp);
+        faranheit.classList.add("active");
+        celcious.classList.remove("active");
+      }
+      let faranheitLocal = document.querySelector(".faranheit");
+      faranheitLocal.addEventListener("click", changeDegreeLocal);
+
+      function changeDegreeLocal2(event) {
+        event.preventDefault();
+        axios
+          .get(
+            `https://api.openweathermap.org/data/2.5/weather?q=mashhad&units=metric&appid=a39d99e6ced537cd2e2f653ab550f5cf`
+          )
+          .then(displayDegree2);
+      }
+      function displayDegree2(position) {
+        let temp = document.querySelector(".zero");
+        temp.innerHTML = Math.round(position.data.main.temp);
+        faranheit.classList.remove("active");
+        celcious.classList.add("active");
+      }
+      let celciousLocal = document.querySelector(".celcious");
+      celciousLocal.addEventListener("click", changeDegreeLocal2);
+
+      function changeDegree2(event) {
+        event.preventDefault();
+        let search = document.querySelector(".search");
+        let city = document.querySelector(".city");
+        city.innerHTML = `${search.value}`;
+        let cityName = search.value;
+
+        let link = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=a39d99e6ced537cd2e2f653ab550f5cf`;
+        axios.get(link).then(changeTofaranheit);
+      }
+      function changeTofaranheit(position) {
+        let temp = document.querySelector(".zero");
+        temp.innerHTML = Math.round(position.data.main.temp);
+        faranheit.classList.add("active");
+        celcious.classList.remove("active");
+      }
+
+      let faranheit = document.querySelector(".faranheit");
+      faranheit.addEventListener("click", changeDegree2);
       function showIcon(position) {
         let icon = document.querySelector("#icon");
         let name = position.data.weather[0].icon;
@@ -412,41 +465,6 @@
       date.innerHTML = `${dayOfWeek} ${hour}:${min}`;
       let update = document.querySelector(".update");
       update.innerHTML = `${dayOfWeek} ${hour}:${min}`;
-
-      function changeDegreeLocal(event) {
-        event.preventDefault();
-        axios
-          .get(
-            `https://api.openweathermap.org/data/2.5/weather?q=mashhad&units=imperial&appid=a39d99e6ced537cd2e2f653ab550f5cf`
-          )
-          .then(displayDegree);
-      }
-      function displayDegree(position) {
-        let temp = document.querySelector(".zero");
-        temp.innerHTML = Math.round(position.data.main.temp);
-        faranheit.classList.add("active");
-        celcious.classList.remove("active");
-      }
-      let faranheitLocal = document.querySelector(".faranheit");
-      faranheitLocal.addEventListener("click", changeDegreeLocal);
-
-      function changeDegreeLocal2(event) {
-        event.preventDefault();
-        axios
-          .get(
-            `https://api.openweathermap.org/data/2.5/weather?q=mashhad&units=metric&appid=a39d99e6ced537cd2e2f653ab550f5cf`
-          )
-          .then(displayDegree2);
-      }
-      function displayDegree2(position) {
-        let temp = document.querySelector(".zero");
-        temp.innerHTML = Math.round(position.data.main.temp);
-        faranheit.classList.remove("active");
-        celcious.classList.add("active");
-      }
-      let celciousLocal = document.querySelector(".celcious");
-      celciousLocal.addEventListener("click", changeDegreeLocal2);
-
       function changeDegree(event) {
         event.preventDefault();
         let search = document.querySelector(".search");
@@ -466,26 +484,6 @@
 
       let celcious = document.querySelector(".celcious");
       celcious.addEventListener("click", changeDegree);
-
-      function changeDegree2(event) {
-        event.preventDefault();
-        let search = document.querySelector(".search");
-        let city = document.querySelector(".city");
-        city.innerHTML = `${search.value}`;
-        let cityName = search.value;
-
-        let link = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=a39d99e6ced537cd2e2f653ab550f5cf`;
-        axios.get(link).then(changeTofaranheit);
-      }
-      function changeTofaranheit(position) {
-        let temp = document.querySelector(".zero");
-        temp.innerHTML = Math.round(position.data.main.temp);
-        faranheit.classList.add("active");
-        celcious.classList.remove("active");
-      }
-
-      let faranheit = document.querySelector(".faranheit");
-      faranheit.addEventListener("click", changeDegree2);
     </script>
   </body>
 </html>
