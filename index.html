@@ -426,8 +426,6 @@
         temp.innerHTML = Math.round(position.data.main.temp);
         faranheit.classList.add("active");
         celcious.classList.remove("active");
-        let cityName = document.querySelector(".city");
-        cityName.innerHTML = "Mashhad";
       }
       let faranheitLocal = document.querySelector(".faranheit");
       faranheitLocal.addEventListener("click", changeDegreeLocal);
@@ -445,8 +443,6 @@
         temp.innerHTML = Math.round(position.data.main.temp);
         faranheit.classList.remove("active");
         celcious.classList.add("active");
-        let cityName = document.querySelector(".city");
-        cityName.innerHTML = "Mashhad";
       }
       let celciousLocal = document.querySelector(".celcious");
       celciousLocal.addEventListener("click", changeDegreeLocal2);
