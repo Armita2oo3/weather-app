@@ -213,14 +213,14 @@
       //loop
       function showDays(position) {
         let forecast = position.data.daily;
-        console.log(position.data.daily)
+        
         let forecastDays = document.querySelector(".forecast");
         let forecastHtml = `<div class="row">`;
         let daily=position.data.daily[0]
         forecast.forEach(function (day, index) {
           if (index < 6) {
             let time = `${timeOfWeek(day.time)}`;
-            console.log(day)
+            
             forecastHtml =
               forecastHtml +
               `
@@ -233,7 +233,7 @@
                 <img
                   class="box"
                   src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${day.condition.icon}.png"
-                  alt="cloudy"
+                  alt=${day.condition.description}
                 />
               </div>
               <div>
