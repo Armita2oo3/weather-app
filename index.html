@@ -136,11 +136,12 @@
         width: 150px;
       }
       .active {
+        opacity: 0.5;
         text-decoration: none;
-        color: lightgrey;
       }
       .active:hover {
-        color: lightgrey;
+        opacity: 0.5;
+        text-decoration: none;
       }
     </style>
   </head>
@@ -181,97 +182,98 @@
         <div>
           <button class="myLocation">Current Location</button>
         </div>
-
-        <div class="container2">
-          <div class="row">
-            <div class="first col border-2 text-center p-4">
-              <div>
-                <h4 class="day" id="first"></h4>
+        <div class="forecast">
+          <div class="container2">
+            <div class="row">
+              <div class="first col border-2 text-center p-4">
+                <div>
+                  <h4 class="day" id="first"></h4>
+                </div>
+                <div class="emoji">
+                  <img
+                    class="box"
+                    src="https://ssl.gstatic.com/onebox/weather/48/rain_s_cloudy.png"
+                    alt="cloudy"
+                  />
+                </div>
+                <div>
+                  <h4>unknown</h4>
+                </div>
               </div>
-              <div class="emoji">
-                <img
-                  class="box"
-                  src="https://ssl.gstatic.com/onebox/weather/48/rain_s_cloudy.png"
-                  alt="cloudy"
-                />
+              <div class="col border-2 text-center p-4">
+                <div>
+                  <h4 class="day" id="second"></h4>
+                </div>
+                <div class="emoji">
+                  <img
+                    class="box"
+                    src="https://ssl.gstatic.com/onebox/weather/48/snow_s_rain.png"
+                    alt="cloudy"
+                  />
+                </div>
+                <div>
+                  <h4>unknown</h4>
+                </div>
               </div>
-              <div>
-                <h4>unknown</h4>
+              <div class="col border-2 text-center p-4">
+                <div>
+                  <h4 class="day" id="third"></h4>
+                </div>
+                <div class="emoji sun">
+                  <img
+                    class="box"
+                    src="https://ssl.gstatic.com/onebox/weather/48/snow_light.png"
+                    alt="cloudy"
+                  />
+                </div>
+                <div>
+                  <h4>unknown</h4>
+                </div>
               </div>
-            </div>
-            <div class="col border-2 text-center p-4">
-              <div>
-                <h4 class="day" id="second"></h4>
+              <div class="col border-2 text-center p-4">
+                <div>
+                  <h4 class="day" id="forth"></h4>
+                </div>
+                <div class="emoji">
+                  <img
+                    class="box"
+                    src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
+                    alt="cloudy"
+                  />
+                </div>
+                <div>
+                  <h4>unknown</h4>
+                </div>
               </div>
-              <div class="emoji">
-                <img
-                  class="box"
-                  src="https://ssl.gstatic.com/onebox/weather/48/snow_s_rain.png"
-                  alt="cloudy"
-                />
+              <div class="col border-2 text-center p-4">
+                <div>
+                  <h4 class="day" id="fifth"></h4>
+                </div>
+                <div class="emoji">
+                  <img
+                    class="box"
+                    src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
+                    alt="cloudy"
+                  />
+                </div>
+                <div>
+                  <h4>unknown</h4>
+                </div>
               </div>
-              <div>
-                <h4>unknown</h4>
-              </div>
-            </div>
-            <div class="col border-2 text-center p-4">
-              <div>
-                <h4 class="day" id="third"></h4>
-              </div>
-              <div class="emoji sun">
-                <img
-                  class="box"
-                  src="https://ssl.gstatic.com/onebox/weather/48/snow_light.png"
-                  alt="cloudy"
-                />
-              </div>
-              <div>
-                <h4>unknown</h4>
-              </div>
-            </div>
-            <div class="col border-2 text-center p-4">
-              <div>
-                <h4 class="day" id="forth"></h4>
-              </div>
-              <div class="emoji">
-                <img
-                  class="box"
-                  src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
-                  alt="cloudy"
-                />
-              </div>
-              <div>
-                <h4>unknown</h4>
-              </div>
-            </div>
-            <div class="col border-2 text-center p-4">
-              <div>
-                <h4 class="day" id="fifth"></h4>
-              </div>
-              <div class="emoji">
-                <img
-                  class="box"
-                  src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
-                  alt="cloudy"
-                />
-              </div>
-              <div>
-                <h4>unknown</h4>
-              </div>
-            </div>
-            <div class="last col border-2 text-center p-4">
-              <div>
-                <h4 class="day" id="sixth"></h4>
-              </div>
-              <div class="emoji">
-                <img
-                  class="box"
-                  src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
-                  alt="cloudy"
-                />
-              </div>
-              <div>
-                <h4>unknown</h4>
+              <div class="last col border-2 text-center p-4">
+                <div>
+                  <h4 class="day" id="sixth">fsr</h4>
+                </div>
+                <div class="emoji">
+                  <img
+                    class="box"
+                    src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
+                    alt="cloudy"
+                  />
+                </div>
+                <div>
+                  <h4>unknown</h4>
+                </div>
               </div>
             </div>
           </div>
@@ -288,205 +290,121 @@
         <span><em> by Armita Mir</em></span>
       </div>
     </div>
-    <script>
-      function changeDegreeLocal(event) {
-        event.preventDefault();
-        axios
-          .get(
-            `https://api.openweathermap.org/data/2.5/weather?q=mashhad&units=imperial&appid=a39d99e6ced537cd2e2f653ab550f5cf`
-          )
-          .then(displayDegree);
-      }
-      function displayDegree(position) {
-        let temp = document.querySelector(".zero");
-        temp.innerHTML = Math.round(position.data.main.temp);
-        faranheit.classList.add("active");
-        celcious.classList.remove("active");
-      }
-      let faranheitLocal = document.querySelector(".faranheit");
-      faranheitLocal.addEventListener("click", changeDegreeLocal);
-
-      function changeDegreeLocal2(event) {
-        event.preventDefault();
-        axios
-          .get(
-            `https://api.openweathermap.org/data/2.5/weather?q=mashhad&units=metric&appid=a39d99e6ced537cd2e2f653ab550f5cf`
-          )
-          .then(displayDegree2);
-      }
-      function displayDegree2(position) {
-        let temp = document.querySelector(".zero");
-        temp.innerHTML = Math.round(position.data.main.temp);
-        faranheit.classList.remove("active");
-        celcious.classList.add("active");
-      }
-      let celciousLocal = document.querySelector(".celcious");
-      celciousLocal.addEventListener("click", changeDegreeLocal2);
-
-      function changeDegree2(event) {
-        event.preventDefault();
-        let search = document.querySelector(".search");
-        let city = document.querySelector(".city");
-        city.innerHTML = `${search.value}`;
-        let cityName = search.value;
-
-        let link = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=a39d99e6ced537cd2e2f653ab550f5cf`;
-        axios.get(link).then(changeTofaranheit);
-      }
-      function changeTofaranheit(position) {
-        let temp = document.querySelector(".zero");
-        temp.innerHTML = Math.round(position.data.main.temp);
-        faranheit.classList.add("active");
-        celcious.classList.remove("active");
-      }
-
-      let faranheit = document.querySelector(".faranheit");
-      faranheit.addEventListener("click", changeDegree2);
-      function showIcon(position) {
-        let icon = document.querySelector("#icon");
-        let name = position.data.weather[0].icon;
-        let newUrl = `https://openweathermap.org/img/wn/${name}@2x.png`;
-        icon.setAttribute("src", `${newUrl}`);
-        let describe = position.data.weather[0].description;
-        icon.setAttribute("alt", `${describe}`);
-        console.log(position.data.weather[0].description);
-      }
-
-      let iconUrl = `https://api.openweathermap.org/data/2.5/weather?q=mashhad&units=metric&appid=a39d99e6ced537cd2e2f653ab550f5cf`;
-      axios.get(iconUrl).then(showIcon);
-
-      function showingTempreture(position) {
-        let showing = document.querySelector(".city");
-        showing.innerHTML = position.data.name;
-        let temp = document.querySelector(".zero");
-        temp.innerHTML = Math.round(position.data.main.temp);
-        let info = document.querySelector("#info");
-        info.innerHTML = position.data.weather[0].main;
-
-        let extra = document.querySelector(".extraInfo");
-        extra.innerHTML = Math.round(position.data.wind.speed);
-      }
-      axios
-        .get(
-          `https://api.openweathermap.org/data/2.5/weather?q=mashhad&units=metric&appid=a39d99e6ced537cd2e2f653ab550f5cf`
-        )
-        .then(showingTempreture);
-      function changeCity(event) {
-        event.preventDefault();
-        let search = document.querySelector(".search");
-        let city = document.querySelector(".city");
-        city.innerHTML = `${search.value}`;
-        let cityName = search.value;
-        let link = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=a39d99e6ced537cd2e2f653ab550f5cf`;
-        axios.get(link).then(changeTempreture);
-      }
-
-      function changeTempreture(position) {
-        let tempreture = document.querySelector(".zero");
-        let newTempreture = Math.ceil(position.data.main.temp);
-
-        tempreture.innerHTML = `${newTempreture}`;
-        let info = document.querySelector("#info");
-        info.innerHTML = position.data.weather[0].main;
-        let extra = document.querySelector(".extraInfo");
-        extra.innerHTML = Math.round(position.data.wind.speed);
-        let icon = document.querySelector("#icon");
-        let name = position.data.weather[0].icon;
-        let newUrl = `https://openweathermap.org/img/wn/${name}@2x.png`;
-        icon.setAttribute("src", `${newUrl}`);
-
-        let describe = position.data.weather[0].description;
-        icon.setAttribute("alt", `${describe}`);
-        console.log(position.data.weather[0].description);
-      }
-
-      let form = document.querySelector(".location");
-      form.addEventListener("submit", changeCity);
-
-      function showCurrentLocation(position) {
-        let tempreture = document.querySelector(".zero");
-        let newTempreture = Math.ceil(position.data.main.temp);
-        tempreture.innerHTML = `${newTempreture}`;
-        let city = document.querySelector(".city");
-        city.innerHTML = `${position.data.name}`;
-      }
-      function getLocation(position) {
-        let lat = position.coords.latitude;
-        let lon = position.coords.longitude;
-        let APIkey = a39d99e6ced537cd2e2f653ab550f5cf;
-        let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric`;
-        axios.get(url).then(showCurrentLocation);
-      }
-      function showLocation() {
-        navigator.geolocation.getCurrentPosition(getLocation);
-      }
-      let button = document.querySelector("button");
-      button.addEventListener("click", showLocation);
-
-      let calender = new Date();
-      let date = document.querySelector(".date");
-      let day = calender.getDay();
-      let days = [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ];
-      let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-      let dayOfWeek = days[day];
-      let first = document.querySelector("#first");
-      first.innerHTML = daysOfWeek[day + 1];
-      let second = document.querySelector("#second");
-      second.innerHTML = daysOfWeek[day + 2];
-      let third = document.querySelector("#third");
-      third.innerHTML = daysOfWeek[day + 3];
-      let forth = document.querySelector("#forth");
-      forth.innerHTML = daysOfWeek[day + 4];
-      let fifth = document.querySelector("#fifth");
-      fifth.innerHTML = daysOfWeek[day + 5];
-      let sixth = document.querySelector("#sixth");
-      sixth.innerHTML = daysOfWeek[day + 6];
-
-      let hour = calender.getHours();
-      if (hour < 10) {
-        hour = `0${hour}`;
-      }
-      let time = document.querySelector(".amOrpm");
-      if (hour <= 24 && hour >= 12) {
-        time.innerHTML = "PM";
-      } else {
-        time.innerHTML = "AM";
-      }
-
-      let min = calender.getMinutes();
-      if (min < 10) {
-        min = `0${min}`;
-      }
-      date.innerHTML = `${dayOfWeek} ${hour}:${min}`;
-      let update = document.querySelector(".update");
-      update.innerHTML = `${dayOfWeek} ${hour}:${min}`;
-      function changeDegree(event) {
-        event.preventDefault();
-        let search = document.querySelector(".search");
-        let city = document.querySelector(".city");
-        city.innerHTML = `${search.value}`;
-        let cityName = search.value;
-
-        let link = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=a39d99e6ced537cd2e2f653ab550f5cf`;
-        axios.get(link).then(changeToCelcious);
-      }
-      function changeToCelcious(position) {
-        let temp = document.querySelector(".zero");
-        temp.innerHTML = Math.round(position.data.main.temp);
-        faranheit.classList.remove("active");
-        celcious.classList.add("active");
-      }
-
-      let celcious = document.querySelector(".celcious");
-      celcious.addEventListener("click", changeDegree);
-    </script>
   </body>
 </html>
+<script>
+  //local
+  function showingTempreture(position) {
+    let showing = document.querySelector(".city");
+    showing.innerHTML = position.data.name;
+    let temp = document.querySelector(".zero");
+    temp.innerHTML = Math.round(position.data.main.temp);
+    celsiusTemperature = position.data.main.temp;
+    let info = document.querySelector("#info");
+    info.innerHTML = position.data.weather[0].main;
+
+    let extra = document.querySelector(".extraInfo");
+    extra.innerHTML = Math.round(position.data.wind.speed);
+    let name = position.data.weather[0].icon;
+    let newUrl = `https://openweathermap.org/img/wn/${name}@2x.png`;
+    icon.setAttribute("src", `${newUrl}`);
+  }
+  function search(city) {
+    let apiKey = "a39d99e6ced537cd2e2f653ab550f5cf";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(showingTempreture);
+  }
+
+  //International
+  function changeCity(event) {
+    event.preventDefault();
+    let newPlace = document.querySelector(".search");
+    search(newPlace.value);
+  }
+
+  let form = document.querySelector(".location");
+  form.addEventListener("submit", changeCity);
+  //units
+
+  function changeToCelcious(event) {
+    event.preventDefault();
+    celcious.classList.add("active");
+    faranheit.classList.remove("active");
+    let temp = document.querySelector(".zero");
+    temp.innerHTML = Math.round(celsiusTemperature);
+  }
+  function changeToFaranheit(event) {
+    event.preventDefault();
+    faranheit.classList.add("active");
+    celcious.classList.remove("active");
+
+    let temp = document.querySelector(".zero");
+    let newfaranheit = (celsiusTemperature * 9) / 5 + 32;
+    temp.innerHTML = Math.round(newfaranheit);
+  }
+
+  let celsiusTemperature = null;
+
+  let faranheit = document.querySelector(".faranheit");
+  faranheit.addEventListener("click", changeToFaranheit);
+
+  let celcious = document.querySelector(".celcious");
+  celcious.addEventListener("click", changeToCelcious);
+  //button
+
+  function showCurrentLocation(position) {
+    let tempreture = document.querySelector(".zero");
+    let newTempreture = Math.ceil(position.data.main.temp);
+    tempreture.innerHTML = `${newTempreture}`;
+    let city = document.querySelector(".city");
+    city.innerHTML = `${position.data.name}`;
+  }
+  function getLocation(position) {
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+    let APIkey = a39d99e6ced537cd2e2f653ab550f5cf;
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric`;
+    axios.get(url).then(showCurrentLocation);
+  }
+  function showLocation() {
+    navigator.geolocation.getCurrentPosition(getLocation);
+  }
+  let button = document.querySelector("button");
+  button.addEventListener("click", showLocation);
+  //date and time
+  let calender = new Date();
+  let date = document.querySelector(".date");
+  let day = calender.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let dayOfWeek = days[day];
+  let hour = calender.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let time = document.querySelector(".amOrpm");
+  if (hour <= 24 && hour >= 12) {
+    time.innerHTML = "PM";
+  } else {
+    time.innerHTML = "AM";
+  }
+
+  let min = calender.getMinutes();
+  if (min < 10) {
+    min = `0${min}`;
+  }
+  date.innerHTML = `${dayOfWeek} ${hour}:${min}`;
+  let update = document.querySelector(".update");
+  update.innerHTML = `${dayOfWeek} ${hour}:${min}`;
+  //command
+  search("Mashhad");
+</script>
