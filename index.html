@@ -290,121 +290,122 @@
         <span><em> by Armita Mir</em></span>
       </div>
     </div>
+
+    <script>
+      //local
+      function showingTempreture(position) {
+        let showing = document.querySelector(".city");
+        showing.innerHTML = position.data.name;
+        let temp = document.querySelector(".zero");
+        temp.innerHTML = Math.round(position.data.main.temp);
+        celsiusTemperature = position.data.main.temp;
+        let info = document.querySelector("#info");
+        info.innerHTML = position.data.weather[0].main;
+
+        let extra = document.querySelector(".extraInfo");
+        extra.innerHTML = Math.round(position.data.wind.speed);
+        let name = position.data.weather[0].icon;
+        let newUrl = `https://openweathermap.org/img/wn/${name}@2x.png`;
+        icon.setAttribute("src", `${newUrl}`);
+      }
+      function search(city) {
+        let apiKey = "a39d99e6ced537cd2e2f653ab550f5cf";
+        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+        axios.get(apiUrl).then(showingTempreture);
+      }
+
+      //International
+      function changeCity(event) {
+        event.preventDefault();
+        let newPlace = document.querySelector(".search");
+        search(newPlace.value);
+      }
+
+      let form = document.querySelector(".location");
+      form.addEventListener("submit", changeCity);
+      //units
+
+      function changeToCelcious(event) {
+        event.preventDefault();
+        celcious.classList.add("active");
+        faranheit.classList.remove("active");
+        let temp = document.querySelector(".zero");
+        temp.innerHTML = Math.round(celsiusTemperature);
+      }
+      function changeToFaranheit(event) {
+        event.preventDefault();
+        faranheit.classList.add("active");
+        celcious.classList.remove("active");
+
+        let temp = document.querySelector(".zero");
+        let newfaranheit = (celsiusTemperature * 9) / 5 + 32;
+        temp.innerHTML = Math.round(newfaranheit);
+      }
+
+      let celsiusTemperature = null;
+
+      let faranheit = document.querySelector(".faranheit");
+      faranheit.addEventListener("click", changeToFaranheit);
+
+      let celcious = document.querySelector(".celcious");
+      celcious.addEventListener("click", changeToCelcious);
+      //button
+
+      function showCurrentLocation(position) {
+        let tempreture = document.querySelector(".zero");
+        let newTempreture = Math.ceil(position.data.main.temp);
+        tempreture.innerHTML = `${newTempreture}`;
+        let city = document.querySelector(".city");
+        city.innerHTML = `${position.data.name}`;
+      }
+      function getLocation(position) {
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
+        let APIkey = a39d99e6ced537cd2e2f653ab550f5cf;
+        let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric`;
+        axios.get(url).then(showCurrentLocation);
+      }
+      function showLocation() {
+        navigator.geolocation.getCurrentPosition(getLocation);
+      }
+      let button = document.querySelector("button");
+      button.addEventListener("click", showLocation);
+      //date and time
+      let calender = new Date();
+      let date = document.querySelector(".date");
+      let day = calender.getDay();
+      let days = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+
+      let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      let dayOfWeek = days[day];
+      let hour = calender.getHours();
+      if (hour < 10) {
+        hour = `0${hour}`;
+      }
+      let time = document.querySelector(".amOrpm");
+      if (hour <= 24 && hour >= 12) {
+        time.innerHTML = "PM";
+      } else {
+        time.innerHTML = "AM";
+      }
+
+      let min = calender.getMinutes();
+      if (min < 10) {
+        min = `0${min}`;
+      }
+      date.innerHTML = `${dayOfWeek} ${hour}:${min}`;
+      let update = document.querySelector(".update");
+      update.innerHTML = `${dayOfWeek} ${hour}:${min}`;
+      //command
+      search("Mashhad");
+    </script>
   </body>
 </html>
-<script>
-  //local
-  function showingTempreture(position) {
-    let showing = document.querySelector(".city");
-    showing.innerHTML = position.data.name;
-    let temp = document.querySelector(".zero");
-    temp.innerHTML = Math.round(position.data.main.temp);
-    celsiusTemperature = position.data.main.temp;
-    let info = document.querySelector("#info");
-    info.innerHTML = position.data.weather[0].main;
-
-    let extra = document.querySelector(".extraInfo");
-    extra.innerHTML = Math.round(position.data.wind.speed);
-    let name = position.data.weather[0].icon;
-    let newUrl = `https://openweathermap.org/img/wn/${name}@2x.png`;
-    icon.setAttribute("src", `${newUrl}`);
-  }
-  function search(city) {
-    let apiKey = "a39d99e6ced537cd2e2f653ab550f5cf";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(showingTempreture);
-  }
-
-  //International
-  function changeCity(event) {
-    event.preventDefault();
-    let newPlace = document.querySelector(".search");
-    search(newPlace.value);
-  }
-
-  let form = document.querySelector(".location");
-  form.addEventListener("submit", changeCity);
-  //units
-
-  function changeToCelcious(event) {
-    event.preventDefault();
-    celcious.classList.add("active");
-    faranheit.classList.remove("active");
-    let temp = document.querySelector(".zero");
-    temp.innerHTML = Math.round(celsiusTemperature);
-  }
-  function changeToFaranheit(event) {
-    event.preventDefault();
-    faranheit.classList.add("active");
-    celcious.classList.remove("active");
-
-    let temp = document.querySelector(".zero");
-    let newfaranheit = (celsiusTemperature * 9) / 5 + 32;
-    temp.innerHTML = Math.round(newfaranheit);
-  }
-
-  let celsiusTemperature = null;
-
-  let faranheit = document.querySelector(".faranheit");
-  faranheit.addEventListener("click", changeToFaranheit);
-
-  let celcious = document.querySelector(".celcious");
-  celcious.addEventListener("click", changeToCelcious);
-  //button
-
-  function showCurrentLocation(position) {
-    let tempreture = document.querySelector(".zero");
-    let newTempreture = Math.ceil(position.data.main.temp);
-    tempreture.innerHTML = `${newTempreture}`;
-    let city = document.querySelector(".city");
-    city.innerHTML = `${position.data.name}`;
-  }
-  function getLocation(position) {
-    let lat = position.coords.latitude;
-    let lon = position.coords.longitude;
-    let APIkey = a39d99e6ced537cd2e2f653ab550f5cf;
-    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric`;
-    axios.get(url).then(showCurrentLocation);
-  }
-  function showLocation() {
-    navigator.geolocation.getCurrentPosition(getLocation);
-  }
-  let button = document.querySelector("button");
-  button.addEventListener("click", showLocation);
-  //date and time
-  let calender = new Date();
-  let date = document.querySelector(".date");
-  let day = calender.getDay();
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-
-  let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  let dayOfWeek = days[day];
-  let hour = calender.getHours();
-  if (hour < 10) {
-    hour = `0${hour}`;
-  }
-  let time = document.querySelector(".amOrpm");
-  if (hour <= 24 && hour >= 12) {
-    time.innerHTML = "PM";
-  } else {
-    time.innerHTML = "AM";
-  }
-
-  let min = calender.getMinutes();
-  if (min < 10) {
-    min = `0${min}`;
-  }
-  date.innerHTML = `${dayOfWeek} ${hour}:${min}`;
-  let update = document.querySelector(".update");
-  update.innerHTML = `${dayOfWeek} ${hour}:${min}`;
-  //command
-  search("Mashhad");
-</script>
