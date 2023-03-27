@@ -123,6 +123,7 @@
         color: white;
         font-size: medium;
         margin-bottom: 10px;
+        margin-top: 10px;
       }
       .update {
         font-weight: 600;
@@ -143,6 +144,11 @@
         opacity: 0.5;
         text-decoration: none;
       }
+      .min{
+        opacity: 0.9;
+      }
+        
+      
     </style>
   </head>
   <body>
@@ -182,103 +188,8 @@
         <div>
           <button class="myLocation">Current Location</button>
         </div>
-        <div class="forecast">
-          <div class="container2">
-            <div class="row">
-              <div class="first col border-2 text-center p-4">
-                <div>
-                  <h4 class="day" id="first"></h4>
-                </div>
-                <div class="emoji">
-                  <img
-                    class="box"
-                    src="https://ssl.gstatic.com/onebox/weather/48/rain_s_cloudy.png"
-                    alt="cloudy"
-                  />
-                </div>
-                <div>
-                  <h4>unknown</h4>
-                </div>
-              </div>
-              <div class="col border-2 text-center p-4">
-                <div>
-                  <h4 class="day" id="second"></h4>
-                </div>
-                <div class="emoji">
-                  <img
-                    class="box"
-                    src="https://ssl.gstatic.com/onebox/weather/48/snow_s_rain.png"
-                    alt="cloudy"
-                  />
-                </div>
-                <div>
-                  <h4>unknown</h4>
-                </div>
-              </div>
-              <div class="col border-2 text-center p-4">
-                <div>
-                  <h4 class="day" id="third"></h4>
-                </div>
-                <div class="emoji sun">
-                  <img
-                    class="box"
-                    src="https://ssl.gstatic.com/onebox/weather/48/snow_light.png"
-                    alt="cloudy"
-                  />
-                </div>
-                <div>
-                  <h4>unknown</h4>
-                </div>
-              </div>
-              <div class="col border-2 text-center p-4">
-                <div>
-                  <h4 class="day" id="forth"></h4>
-                </div>
-                <div class="emoji">
-                  <img
-                    class="box"
-                    src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
-                    alt="cloudy"
-                  />
-                </div>
-                <div>
-                  <h4>unknown</h4>
-                </div>
-              </div>
-              <div class="col border-2 text-center p-4">
-                <div>
-                  <h4 class="day" id="fifth"></h4>
-                </div>
-                <div class="emoji">
-                  <img
-                    class="box"
-                    src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
-                    alt="cloudy"
-                  />
-                </div>
-                <div>
-                  <h4>unknown</h4>
-                </div>
-              </div>
-              <div class="last col border-2 text-center p-4">
-                <div>
-                  <h4 class="day" id="sixth">fsr</h4>
-                </div>
-                <div class="emoji">
-                  <img
-                    class="box"
-                    src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
-                    alt="cloudy"
-                  />
-                </div>
-                <div>
-                  <h4>unknown</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        <div class="forecast"></div>
+          
       <div class="Updated">
         Last Updated : <span class="update"></span>
         <span class="update amOrpm"></span>
@@ -292,7 +203,69 @@
     </div>
 
     <script>
-      //local
+      //timestamp
+      function timeOfWeek(timestamp) {
+        let date = new Date(timestamp * 1000);
+        let day = date.getDay();
+        let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        return days[day];
+      }
+      //loop
+      function showDays(position) {
+        let forecast = position.data.daily;
+        console.log(position)
+        let forecastDays = document.querySelector(".forecast");
+        let forecastHtml = `<div class="row">`;
+        let daily=position.data.daily[0]
+        forecast.forEach(function (day, index) {
+          if (index < 6) {
+            let time = `${timeOfWeek(day.time)}`;
+            forecastHtml =
+              forecastHtml +
+              `
+             <div class="col border-2 text-center p-4">
+              
+              <div>
+                <h4 class="day" id="first">${time}</h4>
+              </div>
+              <div class="emoji">
+                <img
+                  class="box"
+                  src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${position.data.daily[0].condition.icon}.png"
+                  alt="cloudy"
+                />
+              </div>
+              <div>
+                <h4>
+                    <span class="max"><strong>
+                        ${Math.round(position.data.daily[0].temperature.maximum)}°
+                        </strong>
+                    </span>
+                    /
+                    <span class="min">
+                        ${Math.round(position.data.daily[0].temperature.minimum)}°
+                    </span>
+                </h4>
+              </div>
+            </div>
+            `;
+          }
+        });
+        forecastHtml = forecastHtml + `</div>`;
+        forecastDays.innerHTML = forecastHtml;
+      }
+
+      //Daily
+      function getDaily(position) {
+        let lat = position.lat;
+        let lon = position.lon;
+        let key = `fo6f2df46035dba40b34d91tf4b42c6e`;
+        let dailyUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${key}`;
+        axios.get(dailyUrl).then(showDays);
+        
+      }
+
+      //tempreture
       function showingTempreture(position) {
         let showing = document.querySelector(".city");
         showing.innerHTML = position.data.name;
@@ -307,6 +280,7 @@
         let name = position.data.weather[0].icon;
         let newUrl = `https://openweathermap.org/img/wn/${name}@2x.png`;
         icon.setAttribute("src", `${newUrl}`);
+        getDaily(position.data.coord);
       }
       function search(city) {
         let apiKey = "a39d99e6ced537cd2e2f653ab550f5cf";
